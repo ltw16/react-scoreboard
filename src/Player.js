@@ -7,7 +7,7 @@ class Player extends React.Component {
     return (
       <div className="player">
         <div className="player-name">
-          <a onClick={this.props.onRemove}>X </a>
+          <a className="remove-player" onClick={this.props.onRemove}>❌ </a>
           {this.props.name}
         </div>
         <div className="player-score">

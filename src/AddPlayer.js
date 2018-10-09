@@ -22,7 +22,7 @@ class AddPlayer extends React.Component {
   
   render() {
     return (
-      <div>
+      <div className="add-player-form">
         <form onSubmit={this.onSubmit}>
           <input type="text" placeholder="Add Player" value={this.state.playername} onChange={this.onNameChange} />
           <input type="submit" value="Submit" />
