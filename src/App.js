@@ -31,7 +31,10 @@ class Application extends React.Component {
     };
   }
   
-  
+    onScoreChange = (index, delta) => {
+      this.state.players[index].score = this.state.players[index].score + delta;
+      this.setState(this.state);
+    }
   
     onPlayerAdd = name => {
         this.state.players.push({
@@ -52,11 +55,16 @@ class Application extends React.Component {
     
     return (
       <div className="scoreboard">
-        <Header title={this.props.title}/>
+        <Header title={this.props.title} players={this.state.players} />
         <div className="players">
           {this.state.players.map((player, index) => {
             return(
-              <Player name={player.name} score={player.score} key={player.key} onRemove={() => this.onRemovePlayer(index)} />
+              <Player 
+                onScoreChange={(delta) => this.onScoreChange(index, delta)} 
+                name={player.name} 
+                score={player.score} 
+                key={player.key} 
+                onRemove={() => this.onRemovePlayer(index)} />
             );
           })}
             <AddPlayer onAdd={this.onPlayerAdd} />
